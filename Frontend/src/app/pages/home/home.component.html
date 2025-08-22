@@ -1,0 +1,14 @@
+<app-search-bar (onSearch)="onSearch($event)" />
+<app-table [gadgets]="gadgets()" (rowClick)="onRowClick($event)"></app-table>
+<app-pagination
+  [props]="{
+    pageNumber: pageNumber(),
+    pageSize: pageSize(),
+    totalPages: totalPages(),
+    totalCount: totalCount(),
+    hasPreviousPage: hasPreviousPage(),
+    hasNextPage: hasNextPage()
+  }"
+  (pageChange)="onPageChange($event)"
+  (pageSizeChange)="onPageSizeChange($event)"
+></app-pagination>

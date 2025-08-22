@@ -1,0 +1,26 @@
+<ng-container *ngIf="curso | async as gadget; else loading">
+  <div *ngIf="gadget; else notFound" class="gadget-details">
+    <h2>Detalles del Gadget</h2>
+    <ul>
+      <li><strong>ID:</strong> {{ gadget.id }}</li>
+      <li><strong>Nombre:</strong> {{ gadget.name }}</li>
+      <li><strong>Marca:</strong> {{ gadget.brand }}</li>
+      <li><strong>Categoría:</strong> {{ gadget.category }}</li>
+      <li>
+        <strong>Fecha de lanzamiento:</strong>
+        {{ gadget.releaseDate | date : "yyyy-MM-dd" }}
+      </li>
+      <li><strong>Precio:</strong> {{ gadget.price | currency : "USD" }}</li>
+      <li>
+        <strong>Disponible:</strong> {{ gadget.isAvailable ? "Sí" : "No" }}
+      </li>
+    </ul>
+    <button (click)="router.navigate(['/'])">Volver</button>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <p>Cargando detalles...</p>
+</ng-template>
+<ng-template #notFound>
+  <p>No se encontró el gadget.</p>
+</ng-template>

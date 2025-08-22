@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     @for (gadget of gadgets(); track $index) {
-    <tr>
+    <tr (click)="onRowClick(gadget)" style="cursor: pointer">
       <td>{{ gadget.id }}</td>
       <td>{{ gadget.name }}</td>
       <td>{{ gadget.brand }}</td>

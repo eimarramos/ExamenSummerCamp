@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { GadgetService } from './gadget-service.service';
 
-import { GadgetServiceService } from './gadget-service.service';
-
-describe('GadgetServiceService', () => {
-  let service: GadgetServiceService;
+describe('GadgetService', () => {
+  let service: GadgetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GadgetServiceService);
+    service = TestBed.inject(GadgetService);
   });
 
   it('should be created', () => {
