@@ -28,14 +28,9 @@ namespace Web.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetGadgetDto>> GetGadget(int id)
+        public async Task<ActionResult<GetGadgetByIdDto>> GetGadget(int id)
         {
-            var result = await _sender.Send(new GetGadgetQuery(id));
-
-            if (result == null)
-            {
-                return NotFound();
-            }
+            var result = await _sender.Send(new GetGadgetByIdQuery(id));
 
             return Ok(result);
         }

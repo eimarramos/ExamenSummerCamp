@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Gadgets.Queries.GetGatgetById
 {
-    public class GetGadgetDto
+    public class GetGadgetByIdDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
@@ -17,7 +17,7 @@ namespace Application.Gadgets.Queries.GetGatgetById
         {
             public Mapping()
             {
-                CreateMap<Gadget, GetGadgetDto>();
+                CreateMap<Gadget, GetGadgetByIdDto>();
             }
         }
     }

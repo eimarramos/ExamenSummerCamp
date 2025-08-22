@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.DependencyInjection;
+﻿using Web.Infrastructure;
+
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjection
 {
@@ -11,6 +13,8 @@ public static class DependencyInjection
                                 .AllowAnyHeader()
                                 .AllowAnyMethod());
         });
+
+        builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
