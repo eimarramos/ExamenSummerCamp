@@ -1,27 +1,29 @@
-<table *ngIf="gadgets().length > 0" class="gadgets-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Marca</th>
-      <th>Categoría</th>
-      <th>Fecha de lanzamiento</th>
-      <th>Precio</th>
-      <th>Disponible</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (gadget of gadgets(); track $index) {
-    <tr (click)="onRowClick(gadget)" style="cursor: pointer">
-      <td>{{ gadget.id }}</td>
-      <td>{{ gadget.name }}</td>
-      <td>{{ gadget.brand }}</td>
-      <td>{{ gadget.category }}</td>
-      <td>{{ gadget.releaseDate | date : "yyyy-MM-dd" }}</td>
-      <td>{{ gadget.price | currency : "USD" }}</td>
-      <td>{{ gadget.isAvailable ? "Sí" : "No" }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
+<div class="table-container" *ngIf="gadgets().length > 0">
+  <table class="gadgets-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Categoría</th>
+        <th>Fecha de lanzamiento</th>
+        <th>Precio</th>
+        <th>Disponible</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (gadget of gadgets(); track $index) {
+      <tr (click)="onRowClick(gadget)" style="cursor: pointer">
+        <td>{{ gadget.id }}</td>
+        <td>{{ gadget.name }}</td>
+        <td>{{ gadget.brand }}</td>
+        <td>{{ gadget.category }}</td>
+        <td>{{ gadget.releaseDate | date : "yyyy-MM-dd" }}</td>
+        <td>{{ gadget.price | currency : "USD" }}</td>
+        <td>{{ gadget.isAvailable ? "Sí" : "No" }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
 <div *ngIf="gadgets().length === 0">No hay gadgets para mostrar.</div>

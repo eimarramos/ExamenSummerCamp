@@ -1,7 +1,9 @@
-<input
-  type="text"
-  [value]="value"
-  (input)="onInput($event)"
-  placeholder="Search gadgets..."
-/>
-<button (click)="send()">Buscar</button>
+<div class="search-bar">
+  <input
+    type="text"
+    [value]="value"
+    (input)="onInput($event)"
+    placeholder="Search gadgets..."
+  />
+  <button (click)="send()">Buscar</button>
+</div>

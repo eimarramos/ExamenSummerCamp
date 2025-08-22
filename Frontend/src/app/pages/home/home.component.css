@@ -1,0 +1,23 @@
+body,
+:host {
+  background: var(--color-neutral);
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--color-neutral-dark);
+}
+
+.home-container {
+  background: var(--brand-50);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px 0 rgba(30, 64, 175, 0.08);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1400px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-primary);
+  font-weight: 700;
+}

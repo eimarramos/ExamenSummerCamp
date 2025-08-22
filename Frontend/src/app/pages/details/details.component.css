@@ -1,0 +1,93 @@
+:host {
+  display: block;
+  background: var(--color-neutral);
+  min-height: 100vh;
+  color: var(--color-neutral-dark);
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  .details-card {
+    background: linear-gradient(
+      120deg,
+      var(--brand-50) 60%,
+      var(--brand-100) 100%
+    );
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 24px 0 rgba(30, 64, 175, 0.13);
+    padding: 2.5rem 2rem 2rem 2rem;
+    margin: 2.5rem auto;
+    max-width: 480px;
+    border: 1.5px solid var(--brand-200);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  h2 {
+    margin-bottom: 1.2rem;
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .details-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--brand-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--brand-700);
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px 0 rgba(30, 64, 175, 0.1);
+  }
+
+  .details-list {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .details-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--brand-50);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.05rem;
+    color: var(--brand-800);
+  }
+  .details-list li strong {
+    color: var(--brand-700);
+    font-weight: 600;
+  }
+
+  .details-card button {
+    margin-top: 1rem;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 4px 0 rgba(37, 99, 235, 0.1);
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .details-card button:hover {
+    background: var(--color-primary-dark);
+    box-shadow: 0 2px 8px 0 rgba(30, 64, 175, 0.13);
+  }
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}

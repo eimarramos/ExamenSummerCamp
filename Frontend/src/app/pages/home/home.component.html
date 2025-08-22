@@ -1,14 +1,24 @@
-<app-search-bar (onSearch)="onSearch($event)" />
-<app-table [gadgets]="gadgets()" (rowClick)="onRowClick($event)"></app-table>
-<app-pagination
-  [props]="{
-    pageNumber: pageNumber(),
-    pageSize: pageSize(),
-    totalPages: totalPages(),
-    totalCount: totalCount(),
-    hasPreviousPage: hasPreviousPage(),
-    hasNextPage: hasNextPage()
-  }"
-  (pageChange)="onPageChange($event)"
-  (pageSizeChange)="onPageSizeChange($event)"
-></app-pagination>
+<div class="home-container">
+  <app-search-bar
+    class="search-bar"
+    (onSearch)="onSearch($event)"
+  ></app-search-bar>
+  <app-table
+    class="table-container"
+    [gadgets]="gadgets()"
+    (rowClick)="onRowClick($event)"
+  ></app-table>
+  <app-pagination
+    class="pagination"
+    [props]="{
+      pageNumber: pageNumber(),
+      pageSize: pageSize(),
+      totalPages: totalPages(),
+      totalCount: totalCount(),
+      hasPreviousPage: hasPreviousPage(),
+      hasNextPage: hasNextPage()
+    }"
+    (pageChange)="onPageChange($event)"
+    (pageSizeChange)="onPageSizeChange($event)"
+  ></app-pagination>
+</div>

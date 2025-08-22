@@ -1,18 +1,33 @@
 <ng-container *ngIf="curso | async as gadget; else loading">
-  <div *ngIf="gadget; else notFound" class="gadget-details">
+  <div *ngIf="gadget; else notFound" class="details-card">
+    <div class="details-avatar">
+      <span>{{ gadget.name ? (gadget.name[0] | uppercase) : "?" }}</span>
+    </div>
     <h2>Detalles del Gadget</h2>
-    <ul>
-      <li><strong>ID:</strong> {{ gadget.id }}</li>
-      <li><strong>Nombre:</strong> {{ gadget.name }}</li>
-      <li><strong>Marca:</strong> {{ gadget.brand }}</li>
-      <li><strong>Categoría:</strong> {{ gadget.category }}</li>
+    <ul class="details-list">
+      <li>
+        <strong>ID:</strong> <span>{{ gadget.id }}</span>
+      </li>
+      <li>
+        <strong>Nombre:</strong> <span>{{ gadget.name }}</span>
+      </li>
+      <li>
+        <strong>Marca:</strong> <span>{{ gadget.brand }}</span>
+      </li>
+      <li>
+        <strong>Categoría:</strong> <span>{{ gadget.category }}</span>
+      </li>
       <li>
         <strong>Fecha de lanzamiento:</strong>
-        {{ gadget.releaseDate | date : "yyyy-MM-dd" }}
+        <span>{{ gadget.releaseDate | date : "yyyy-MM-dd" }}</span>
       </li>
-      <li><strong>Precio:</strong> {{ gadget.price | currency : "USD" }}</li>
       <li>
-        <strong>Disponible:</strong> {{ gadget.isAvailable ? "Sí" : "No" }}
+        <strong>Precio:</strong>
+        <span>{{ gadget.price | currency : "USD" }}</span>
+      </li>
+      <li>
+        <strong>Disponible:</strong>
+        <span>{{ gadget.isAvailable ? "Sí" : "No" }}</span>
       </li>
     </ul>
     <button (click)="router.navigate(['/'])">Volver</button>
