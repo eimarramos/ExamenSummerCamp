@@ -1,0 +1,16 @@
+<nav class="pagination-nav">
+  <button (click)="goToFirst()" [disabled]="pageNumber() <= 1">
+    « Primero
+  </button>
+  <button (click)="goToPrevious()" [disabled]="pageNumber() <= 1">
+    ‹ Anterior
+  </button>
+  <span>Página {{ pageNumber() }} de {{ totalPages() }}</span>
+  <button (click)="goToNext()" [disabled]="pageNumber() >= totalPages()">
+    Siguiente ›
+  </button>
+  <button (click)="goToLast()" [disabled]="pageNumber() >= totalPages()">
+    Último »
+  </button>
+</nav>
+<div class="pagination-info">Total de elementos: {{ totalCount() }}</div>

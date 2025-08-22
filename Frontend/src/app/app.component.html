@@ -1,0 +1,9 @@
+<app-table [gadgets]="gadgets()"></app-table>
+<app-pagination
+  [pageNumber]="pageNumber()"
+  [totalPages]="totalPages()"
+  [totalCount]="totalCount()"
+  [hasPreviousPage]="hasPreviousPage()"
+  [hasNextPage]="hasNextPage()"
+  (pageChange)="onPageChange($event)"
+></app-pagination>
