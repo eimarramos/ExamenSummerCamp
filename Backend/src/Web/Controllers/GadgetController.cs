@@ -1,4 +1,5 @@
-﻿using Application.Gadgets.Queries;
+﻿using Application.Gadgets.Queries.GetGadgets;
+using Application.Gadgets.Queries.GetGatgetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,25 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetGadgetsDto>>> GetGadgets([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<GetGadgetsDto>>> GetGadgets(
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? filterString = null)
         {
-            var result = await _sender.Send(new GetGadgetsQuery(pageNumber, pageSize));
+            var result = await _sender.Send(new GetGadgetsQuery(pageNumber, pageSize, filterString));
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetGadgetDto>> GetGadget(int id)
+        {
+            var result = await _sender.Send(new GetGadgetQuery(id));
+
+            if (result == null)
+            {
+                return NotFound();
+            }
 
             return Ok(result);
         }

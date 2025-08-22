@@ -1,7 +1,7 @@
 ﻿using Domain;
 using Domain.Entities;
 
-namespace Application.Gadgets.Queries;
+namespace Application.Gadgets.Queries.GetGadgets;
 public class GetGadgetsDto
 {
     public int Id { get; set; }
