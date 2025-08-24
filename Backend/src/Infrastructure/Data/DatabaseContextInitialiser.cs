@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Infrastructure.Data;
@@ -11,6 +12,9 @@ public static class InitialiserExtensions
     public static async Task InitialiseDatabaseAsync(this WebApplication app)
     {
         using var scope = app.Services.CreateScope();
+
+        var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+        await context.Database.MigrateAsync();
 
         var initialiser = scope.ServiceProvider.GetRequiredService<DatabaseContextInitialiser>();
 
