@@ -1,8 +1,9 @@
 import { Gadget } from '@/models/Gadget';
 import { Pagination } from '@/models/Pagination';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,16 +18,30 @@ export class GadgetService {
     pageSize: number,
     filterString: string = ''
   ): Observable<Pagination> {
-    const url =
-      `${this.API_URL}?pageNumber=${pageNumber}&pageSize=${pageSize}` +
-      (filterString ? `&filterString=${encodeURIComponent(filterString)}` : '');
+    let params = new HttpParams()
+      .set('pageNumber', pageNumber)
+      .set('pageSize', pageSize);
 
-    return this.http.get<Pagination>(url);
+    if (filterString) {
+      params = params.set('filterString', filterString);
+    }
+
+    return this.http.get<Pagination>(this.API_URL, { params }).pipe(
+      catchError((error) => {
+        console.error('Error al obtener gadgets:', error);
+        return throwError(() => error);
+      })
+    );
   }
 
   getGadgetById(id: number): Observable<Gadget> {
-    const url = `${this.API_URL}/${id}`;
+    const params = new HttpParams().set('id', id);
 
-    return this.http.get<Gadget>(url);
+    return this.http.get<Gadget>(this.API_URL, { params }).pipe(
+      catchError((error) => {
+        console.error(`Error al obtener gadget con id ${id}:`, error);
+        return throwError(() => error);
+      })
+    );
   }
 }
