@@ -24,17 +24,17 @@ namespace Application.Gadgets.Queries.GetGatgetById
             _logger.LogInformation("Handling GetGadgetByIdQuery: Id={Id}", request.Id);
             try
             {
-                var gadget = await _context.Gadgets
+                var gadgetDto = await _context.Gadgets
                     .AsNoTracking()
+                    .ProjectTo<GetGadgetByIdDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(g => g.Id == request.Id, cancellationToken);
 
-                if (gadget == null)
+                if (gadgetDto == null)
                 {
                     _logger.LogWarning("Gadget not found: Id={Id}", request.Id);
-                    Guard.Against.NotFound(request.Id, gadget);
+                    Guard.Against.NotFound(request.Id, gadgetDto);
                 }
 
-                var gadgetDto = _mapper.Map<GetGadgetByIdDto>(gadget);
                 _logger.LogInformation("Gadget found: Id={Id}, Name={Name}", gadgetDto.Id, gadgetDto.Name);
                 return gadgetDto;
             }
