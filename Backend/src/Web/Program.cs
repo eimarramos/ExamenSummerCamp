@@ -1,4 +1,5 @@
 using Infrastructure.Data;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.AddInfrastructureServices();
 builder.AddWebServices();
 
 builder.Services.AddControllers();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 

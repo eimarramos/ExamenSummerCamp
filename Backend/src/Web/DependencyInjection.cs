@@ -1,4 +1,5 @@
-﻿using Web.Infrastructure;
+﻿using Serilog;
+using Web.Infrastructure;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -18,5 +19,15 @@ public static class DependencyInjection
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        Log.Logger = new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.File(
+                "logs/log-.txt",
+                rollingInterval: RollingInterval.Day
+            )
+            .MinimumLevel.Information()
+            .CreateLogger();
     }
 }
